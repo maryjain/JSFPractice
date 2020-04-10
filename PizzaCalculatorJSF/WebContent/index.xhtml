@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 	  
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+
+<h:head>
+<style type="text/css">
+  .parent {
+font-family: "Times New Roman", Times, serif;
+ display:table;height:100%;margin: 0 auto
+}
+ 
+.inner {
+display:table-cell;vertical-align:middle;width:60%
+}
+.formtext
+{
+font-weight: bold;
+font-size: 15px;
+
+ 
+}
+</style>
+<title>
+Pizza Calculator
+</title>
+</h:head>
+
+
+<h:body bgcolor="#d5f5e3">
+
+
+<div class="parent">
+ <div class="inner">
+
+<h2> Tasty Pizza's 
+</h2>
+ <h:graphicImage value = "pizza.jpg" />
+ <br></br>
+ <br></br>
+ 
+<h:form>
+
+<h:panelGrid columns="3" border="0"  cellpadding ="8"  bgcolor="#F6F8E7" >
+
+<f:facet  name="header">
+<h:outputText>Buy Delicious Pizza</h:outputText><br></br>
+</f:facet>
+
+<h:outputText id="pizzabottom" value="Pizza bottom" styleClass="formtext"></h:outputText>
+ <h:selectOneMenu id="bottomdrop" value="#{order.bottom}">
+ <f:selectItems value="#{pizza.crust}" />
+ </h:selectOneMenu>
+<h:message for="bottomdrop" style="color:red"></h:message>
+
+<h:outputText id="pizzatoppings" value="Pizza toppings" styleClass="formtext"></h:outputText>
+ <h:selectManyCheckbox id ="toppingselect" value="#{order.toppings}" required="true" >
+ <f:selectItems id="toppingcheck" value="#{pizza.toppings}" />
+ </h:selectManyCheckbox>
+<h:message for="toppingselect" style="color:red"></h:message>
+
+  <h:outputText id="pizzasize" value="Pizza size" styleClass="formtext"></h:outputText>
+  <h:selectOneRadio id="sizeradio" value="#{order.size}" required="true">
+  <f:selectItems value="#{pizza.size}" />
+  </h:selectOneRadio>
+  <h:message for="sizeradio" style="color:red"></h:message>
+  
+  
+   <h:outputText id="customername" value="Customer Name" styleClass="formtext" ></h:outputText>
+  <h:inputText id="name" value="#{customer.name}" required="true" validatorMessage="Your name can have only Alphabets">  
+<f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />  
+</h:inputText>
+ <h:message for="name" style="color:red"></h:message>
+ 
+ 
+   <h:outputText id="customerphone" value="Customer Phone" styleClass="formtext" >   
+   </h:outputText>
+  <h:inputText id="phone" value="#{customer.phone}" required="true">
+   <f:validator validatorId="phoneValidator" />
+  </h:inputText>
+  <h:message for="phone" style="color:red"></h:message>
+  
+    <h:outputText id="delivery" value="Delivery method" styleClass="formtext"></h:outputText>
+  <h:selectOneRadio id="deliveryradio" value="#{order.typeofdelivery}" required="true">
+  <f:selectItems value="#{pizza.delivery}" />
+  </h:selectOneRadio>
+    <h:message for="deliveryradio" style="color:red"></h:message>
+  
+<f:facet name="footer">
+<h:panelGroup style="display:block;text-align:center"> 
+<h:commandButton value="Submit" action ="#{order.calculatePizzaOrder}"></h:commandButton>
+</h:panelGroup>
+</f:facet>
+
+</h:panelGrid>
+</h:form>
+</div>
+</div>
+
+
+</h:body>
+</html>

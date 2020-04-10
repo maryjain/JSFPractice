@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 	  
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+
+
+<h:head>
+<style type="text/css">
+  .parent {
+font-family: "Times New Roman", Times, serif;
+ display:table;height:100%;margin: 0 auto
+}
+ 
+.inner {
+display:table-cell;vertical-align:middle;width:60%
+}
+.formtext
+{
+font-weight: bold;
+font-size: 15px;
+color: 	#730d0d;
+ 
+}
+
+.largetext
+{
+font-weight: bold;
+font-size: 18px;
+color: green;
+ 
+}
+</style>
+<title>Order details</title>
+</h:head>
+
+
+<h:body bgcolor="#d5f5e3">
+
+<div class="parent">
+ <div class="inner">
+ 
+<h2> Tasty Pizza's 
+</h2>
+
+<h:panelGrid columns="2" border="0"  cellpadding ="8"  bgcolor="#F6F8E7" >
+
+<f:facet  name="header">
+<h:outputText styleClass="largetext">Order and Bill Details</h:outputText><hr></hr><br></br>
+<h:panelGrid columns="2" border="0"  cellpadding ="8"  bgcolor="#ffe6e6">
+
+<h:outputText id="customername" value="Customer Name :" styleClass="formtext"></h:outputText>
+<h:outputText id="name" value="#{customer.name}"></h:outputText>  
+
+<h:outputText id="customerphone" value="Customer Phone:" styleClass="formtext"></h:outputText>
+<h:outputText id="phone" value="#{customer.phone}"></h:outputText>
+</h:panelGrid>
+</f:facet>
+
+   <h:outputText id="pizzaorder" value="Order" styleClass="largetext"></h:outputText>
+   <h:outputText id="pizzacost" value="Cost" styleClass="largetext"></h:outputText>
+
+ <h:outputText id="pizzabottom" value="Bottom #{order.bottom}" styleClass="formtext"></h:outputText>
+  <h:outputText id="bottoncost" value="#{order.bottom_cost}"></h:outputText>
+  
+ <h:outputText id="pizzatopping" value="Toppings" styleClass="formtext"></h:outputText>
+  <h:outputText id="toppingcost" value="#{order.toppings_cost}"></h:outputText>
+  
+ <h:outputText id="pizzasize" value="Size #{order.size}" styleClass="formtext"></h:outputText>
+  <h:outputText id="sizecost" value="#{order.size_cost}"></h:outputText>
+  
+  <h:outputText id="pizzadelivery" value="Delivery #{order.typeofdelivery}" styleClass="formtext"></h:outputText>
+  <h:outputText id="deliverycost" value="0.0"></h:outputText>
+ 
+  
+ <h:outputText id="pizzatotal" value="Total cost" styleClass="formtext"></h:outputText>
+  <h:outputText id="totalcost" value="#{order.totalcost}" styleClass="formtext"></h:outputText>
+
+ <f:facet name="footer">
+<h:panelGroup style="display:block;text-align:center"> 
+<h:outputText>Thank you</h:outputText>
+
+</h:panelGroup>
+</f:facet>
+
+</h:panelGrid>
+</div>
+</div>
+</h:body>
+</html>
